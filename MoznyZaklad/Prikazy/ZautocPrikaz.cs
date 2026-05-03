@@ -145,7 +145,13 @@ namespace MoznyZaklad.Prikazy
                     // VÍTĚZSTVÍ
                     sb.AppendLine($"\n[VÍTĚZSTVÍ] {protivnik.Jmeno} padl mrtev k zemi!");
                     Logger.Log($"Hrac {hrac.Jmeno} porazil {protivnik.Jmeno}.");
-
+                    // --- N LOGIKA PRO KONEC HRY (DRAK) ---
+                    if (protivnik.Jmeno.Equals("Drak", StringComparison.OrdinalIgnoreCase))
+                    {
+                        AktivniSouboje.Remove(hrac);
+                        hrac.AktualniMistnost.NpcPostavy.Remove(protivnik);
+                        return "VYHRAL_JSI_KONEC"; // Speciální kód pro server
+                    }
                     // LOGIKA PRO DROP PŘEDMĚTU
                     if (!string.IsNullOrEmpty(protivnik.OdmenaId))
                     {

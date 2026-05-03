@@ -88,6 +88,7 @@ namespace MoznyZaklad.Server
         {
             Console.WriteLine("Klient se pripojil na server.");
             Hrac? hrac = null;
+           
 
             try
             {
@@ -231,7 +232,19 @@ namespace MoznyZaklad.Server
 
                         // Provedení příkazu (sem se teď dostane buď "utoc", nebo cokoliv mimo boj)
                         string odpoved = procesor.Zpracuj(hrac, vstup);
-                        if (!string.IsNullOrWhiteSpace(odpoved)) await writer.WriteLineAsync(odpoved);
+                        // --- KONTROLA VÍTĚZSTVÍ ---
+                        if (odpoved == "VYHRAL_JSI_KONEC")
+                        {
+                          
+                            await writer.WriteLineAsync("\n***************************************************");
+                            await writer.WriteLineAsync("   GRATULUJEME! PORAZIL JSI STRAŠLIVÉHO DRAKA!");
+                            await writer.WriteLineAsync("          --- VYHRÁL JSI HRU ---");
+                            await writer.WriteLineAsync("***************************************************\n");
+                            await Task.Delay(2000);
+                        clientConnected = false; // Ukončí smyčku a odpojí hráče
+                        }
+                        else if (!string.IsNullOrWhiteSpace(odpoved)) 
+                            await writer.WriteLineAsync(odpoved);
                     }
                 }
             }

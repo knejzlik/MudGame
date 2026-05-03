@@ -54,8 +54,8 @@
     "Id": "drak",
     "Typ": "bojove",
     "Jmeno": "Drak",
-    "Popis": "Ohromna bestie chrlci ohen.",
-    "Zivoty": 50,
+    "Popis": "Ohromna bestie chrlici ohen.",
+    "Zivoty": 40,
     "Utok": 15,
     "Obrana": 5
     

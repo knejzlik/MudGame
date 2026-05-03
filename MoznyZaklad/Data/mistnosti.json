@@ -10,7 +10,7 @@
   {
     "Id": "hospoda",
     "Nazev": "Hospoda",
-    "Popis": "Citit pivo a gulasi.",
+    "Popis": "Citis pivo a gulas.",
     "Vychody": [ "namesti","mesto","tvrz" ],
     "PredmetIds": [ "dzban" ],
     "NpcIds": [ "hostinsky"  ]
@@ -116,7 +116,7 @@
     "Nazev": "Kovarna",
     "Popis": "Je tu vedro k padnuti.",
     "Vychody": [ "kostel","hrbitov","sluj" ],
-    "PredmetIds": [  ],
+    "PredmetIds": [ ],
     "NpcIds": [ "kovar" ]
   },
   {
