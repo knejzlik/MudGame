@@ -1,9 +1,21 @@
 ﻿[
   {
     "Id": "mapa",
-    "Nazev": "mapa",
+    "Nazev": "mapa ",
     "Popis": "Stara mapa.",
     "Cena": 5
+  },
+  {
+    "Id": "kompas",
+    "Nazev": "Kompas",
+    "Popis": "Uzitecna vecicka.",
+    "Cena": 25
+  },
+  {
+    "Id": "dalekohled",
+    "Nazev": "Dalekohled",
+    "Popis": "Dreveny dalekohled.",
+    "Cena": 25
   },
   {
     "Id": "dzban",
@@ -12,10 +24,22 @@
     "Cena": 2
   },
   {
+    "Id": "zlate_jablko",
+    "Nazev": "Zlate_jablko",
+    "Popis": "Jablko ze zlata.",
+    "Cena": 100
+  },
+  {
     "Id": "Vlci_zub",
     "Nazev": "Vlci zub",
     "Popis": "Trofej z vlka.",
     "Cena": 15
+  },
+  {
+    "Id": "krokodyli_ocas",
+    "Nazev": "Krokodyli ocas",
+    "Popis": "Trofej z Krokodyla.",
+    "Cena": 30
   },
   {
     "Id": "lektvar_hp",
@@ -48,5 +72,12 @@
     "Cena": 80,
     "TypUcitku": "obrana",
     "HodnotaEfektu": 3
+  },
+  {
+    "Id": "lektvar_leceni",
+    "Nazev": "Lektvar_leceni",
+    "Popis": "Lahev s cervenou tekutinou.",
+    "TypUcitku": "leceni",
+    "HodnotaEfektu": 30
   }
 ]

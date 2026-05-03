@@ -8,7 +8,9 @@
   },
   {
     "Id": "hostinsky",
+    "Typ": "mluvici",
     "Jmeno": "Hostinsky",
+    "Popis": "Tlusty muz v zastere.",
     "Text": "Vitejte u nas!"
   },
   {
@@ -16,8 +18,8 @@
     "Typ": "bojove",
     "Jmeno": "Vlk",
     "Popis": "Hladova selma se stribrnou srsti.",
-    "Zivoty": 40,
-    "Utok": 8,
+    "Zivoty": 20,
+    "Utok": 5,
     "Obrana": 2,
     "DropChance": 50,
     "OdmenaId": "Vlci_zub"
@@ -26,8 +28,72 @@
     "Id": "obchodnik",
     "Typ": "obchodnik",
     "Jmeno": "Vilda",
+    "Popis": "Mladik ktery, vypada ze by neco koupil.",
+    "Uvitani": "Zdravim, nemas neco na prodej?",
+    "ZboziIds": [ "lektvar_hp", "lektvar_hp_max", "elixir_sily", "ocelova_kuze" ]
+  },
+  {
+    "Id": "vesnican",
+    "Typ": "mluvici",
+    "Jmeno": "Vesnican",
+    "Popis": "Stary muz v osuntenem obleku",
+    "Text": "Tahni odkud jsi prisel cizaku."
+  },
+  {
+    "Id": "krokodyl",
+    "Typ": "bojove",
+    "Jmeno": "Krokodyl",
+    "Popis": "Zelena potvora zijici v bazinach.",
+    "Zivoty": 30,
+    "Utok": 10,
+    "Obrana": 4,
+    "DropChance": 50,
+    "OdmenaId": "krokodyli_ocas"
+  },
+  {
+    "Id": "drak",
+    "Typ": "bojove",
+    "Jmeno": "Drak",
+    "Popis": "Ohromna bestie chrlci ohen.",
+    "Zivoty": 50,
+    "Utok": 15,
+    "Obrana": 5,
+    "DropChance": 50,
+    "OdmenaId": "Vlci_zub"
+  },
+  {
+    "Id": "prodavac",
+    "Typ": "obchodnik",
+    "Jmeno": "Starec",
     "Popis": "Stary muz v zaplatovanem plasti, ktery ochotne odkupi cokoliv hodnotneho.",
     "Uvitani": "Zdravim, poutniku! Mas neco na prodej? Moje kapsy jsou hluboke a zlata mam dost.",
     "ZboziIds": [ "lektvar_hp", "lektvar_hp_max", "elixir_sily", "ocelova_kuze" ]
+  },
+  {
+    "Id": "knez",
+    "Typ": "bojove",
+    "Jmeno": "Knez",
+    "Popis": "Radeji utec nez te prokleje.",
+    "Zivoty": 10,
+    "Utok": 3,
+    "Obrana": 2
+
+  },
+  {
+    "Id": "kovar",
+    "Typ": "mluvici",
+    "Jmeno": "Kovar",
+    "Popis": "Vysoky muz s ohromnou silou.",
+    "Text": "Zdaleka se vyhni draci sluji ktera, se nachazi na jihovychode."
+  },
+  {
+    "Id": "prizrak",
+    "Typ": "bojove",
+    "Jmeno": "Prizrak",
+    "Popis": "Nebylo by moudre stavet se mu do cesty.",
+    "Zivoty": 15,
+    "Utok": 7,
+    "Obrana": 3
+
   }
 ]
