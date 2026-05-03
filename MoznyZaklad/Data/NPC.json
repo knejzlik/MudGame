@@ -57,9 +57,8 @@
     "Popis": "Ohromna bestie chrlci ohen.",
     "Zivoty": 50,
     "Utok": 15,
-    "Obrana": 5,
-    "DropChance": 50,
-    "OdmenaId": "Vlci_zub"
+    "Obrana": 5
+    
   },
   {
     "Id": "prodavac",
