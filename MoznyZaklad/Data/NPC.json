@@ -1,0 +1,33 @@
+﻿[
+  {
+    "Id": "strazny",
+    "Typ": "mluvici",
+    "Jmeno": "Strazny",
+    "Popis": "Vysoky muz v blestive zbroji.",
+    "Text": "Zdravim te, poutniku. Davej si v lese pozor na vlky!"
+  },
+  {
+    "Id": "hostinsky",
+    "Jmeno": "Hostinsky",
+    "Text": "Vitejte u nas!"
+  },
+  {
+    "Id": "vlk",
+    "Typ": "bojove",
+    "Jmeno": "Vlk",
+    "Popis": "Hladova selma se stribrnou srsti.",
+    "Zivoty": 40,
+    "Utok": 8,
+    "Obrana": 2,
+    "DropChance": 50,
+    "OdmenaId": "Vlci_zub"
+  },
+  {
+    "Id": "obchodnik",
+    "Typ": "obchodnik",
+    "Jmeno": "Vilda",
+    "Popis": "Stary muz v zaplatovanem plasti, ktery ochotne odkupi cokoliv hodnotneho.",
+    "Uvitani": "Zdravim, poutniku! Mas neco na prodej? Moje kapsy jsou hluboke a zlata mam dost.",
+    "ZboziIds": [ "lektvar_hp", "lektvar_hp_max", "elixir_sily", "ocelova_kuze" ]
+  }
+]

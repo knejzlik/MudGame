@@ -1,0 +1,26 @@
+﻿[
+  {
+    "Id": "namesti",
+    "Nazev": "Namesti",
+    "Popis": "Stojis na namesti s fontanou.",
+    "Vychody": [ "hospoda", "les" ],
+    "PredmetIds": [ "mapa" ],
+    "NpcIds": [ "strazny" ]
+  },
+  {
+    "Id": "hospoda",
+    "Nazev": "Hospoda",
+    "Popis": "Citit pivo a gulasi.",
+    "Vychody": [ "namesti" ],
+    "PredmetIds": [ "dzban" ],
+    "NpcIds": [ "hostinsky", "obchodnik" ]
+  },
+  {
+    "Id": "les",
+    "Nazev": "Les",
+    "Popis": "Hluboky temny les.",
+    "Vychody": [ "namesti" ],
+    "PredmetIds": [],
+    "NpcIds": [ "vlk" ]
+  }
+]

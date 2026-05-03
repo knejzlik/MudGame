@@ -1,0 +1,52 @@
+﻿[
+  {
+    "Id": "mapa",
+    "Nazev": "mapa",
+    "Popis": "Stara mapa.",
+    "Cena": 5
+  },
+  {
+    "Id": "dzban",
+    "Nazev": "dzban",
+    "Popis": "Hlineny dzban.",
+    "Cena": 2
+  },
+  {
+    "Id": "Vlci_zub",
+    "Nazev": "Vlci zub",
+    "Popis": "Trofej z vlka.",
+    "Cena": 15
+  },
+  {
+    "Id": "lektvar_hp",
+    "Nazev": "Lecivy lektvar",
+    "Popis": "Mala lahvicka s cervenou tekutinou.",
+    "Cena": 15,
+    "TypUcitku": "leceni",
+    "HodnotaEfektu": 20
+  },
+  {
+    "Id": "lektvar_hp_max",
+    "Nazev": "Lektvar vitality",
+    "Popis": "Husta fialova tekutina, ktera ti trvale zvedne strop zdravi.",
+    "Cena": 100,
+    "TypUcitku": "max_hp",
+    "HodnotaEfektu": 20
+  },
+  {
+    "Id": "elixir_sily",
+    "Nazev": "Elixir sily",
+    "Popis": "Trvale zvysi tvuj utok.",
+    "Cena": 80,
+    "TypUcitku": "utok",
+    "HodnotaEfektu": 5
+  },
+  {
+    "Id": "ocelova_kuze",
+    "Nazev": "Svitok ocelove kuze",
+    "Popis": "Trvale zvysi tvou obranu.",
+    "Cena": 80,
+    "TypUcitku": "obrana",
+    "HodnotaEfektu": 3
+  }
+]
