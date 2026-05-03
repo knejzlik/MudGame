@@ -3,7 +3,7 @@
     "Id": "namesti",
     "Nazev": "Namesti",
     "Popis": "Stojis na namesti s fontanou.",
-    "Vychody": [ "hospoda", "les" ],
+    "Vychody": [ "hospoda", "les",  "kostel" ],
     "PredmetIds": [ "mapa" ],
     "NpcIds": [ "strazny" ]
   },
@@ -19,8 +19,24 @@
     "Id": "les",
     "Nazev": "Les",
     "Popis": "Hluboky temny les.",
-    "Vychody": [ "namesti" ],
+    "Vychody": [ "namesti" , "laguna" ],
     "PredmetIds": [],
     "NpcIds": [ "vlk" ]
+  },
+  {
+    "Id": "laguna",
+    "Nazev": "laguna",
+    "Popis": "Nachazis se  pred lagunou s kristalove pruzracnou vodou.",
+    "Vychody": [  "les" ],
+    "PredmetIds": [  ],
+    "NpcIds": [  ]
+  },
+  {
+    "Id": "kostel",
+    "Nazev": "kostel",
+    "Popis": "Citit pivo a gulasi.",
+    "Vychody": [ "namesti" ],
+    "PredmetIds": [  ],
+    "NpcIds": [  ]
   }
 ]
