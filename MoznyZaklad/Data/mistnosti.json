@@ -3,7 +3,7 @@
     "Id": "namesti",
     "Nazev": "Namesti",
     "Popis": "Stojis na namesti s fontanou.",
-    "Vychody": [ "hospoda", "les",  "kostel" ],
+    "Vychody": [ "hospoda", "les", "kostel","predmesti" ],
     "PredmetIds": [ "mapa" ],
     "NpcIds": [ "strazny" ]
   },
@@ -11,7 +11,7 @@
     "Id": "hospoda",
     "Nazev": "Hospoda",
     "Popis": "Citit pivo a gulasi.",
-    "Vychody": [ "namesti" ],
+    "Vychody": [ "namesti","mesto","tvrz" ],
     "PredmetIds": [ "dzban" ],
     "NpcIds": [ "hostinsky", "obchodnik" ]
   },
@@ -19,24 +19,112 @@
     "Id": "les",
     "Nazev": "Les",
     "Popis": "Hluboky temny les.",
-    "Vychody": [ "namesti" , "laguna" ],
+    "Vychody": [ "namesti", "laguna", "hory","vesnice" ],
     "PredmetIds": [],
     "NpcIds": [ "vlk" ]
   },
   {
     "Id": "laguna",
-    "Nazev": "laguna",
-    "Popis": "Nachazis se  pred lagunou s kristalove pruzracnou vodou.",
-    "Vychody": [  "les" ],
+    "Nazev": "Laguna",
+    "Popis": "Nachazis se pred lagunou s kristalove pruzracnou vodou.",
+    "Vychody": [ "les","hrad","hvozd" ],
+    "PredmetIds": [],
+    "NpcIds": []
+  },
+  {
+    "Id": "kostel",
+    "Nazev": "Kostel",
+    "Popis": "Panuje tu hrobove ticho.",
+    "Vychody": [ "namesti" , "hory" , "mesto","kovarna" ],
+    "PredmetIds": [],
+    "NpcIds": []
+  },
+  {
+    "Id": "hory",
+    "Nazev": "Hory",
+    "Popis": "Ve vysokych horach je potreba davat pozor.",
+    "Vychody": [  "les", "kostel","hrad","hrbitov" ],
+    "PredmetIds": [ ],
+    "NpcIds": [ ]
+  },
+  {
+    "Id": "hrad",
+    "Nazev": "Hrad",
+    "Popis": "Pred sebou vidis rozsahle saly starobyleho hradu.",
+    "Vychody": [ "laguna","hory","bazina" ],
     "PredmetIds": [  ],
     "NpcIds": [  ]
   },
   {
-    "Id": "kostel",
-    "Nazev": "kostel",
-    "Popis": "Citit pivo a gulasi.",
-    "Vychody": [ "namesti" ],
+    "Id": "hvozd",
+    "Nazev": "Hvozd",
+    "Popis": "V temnem hvozdu se ukryvaji vselijake bytosti.",
+    "Vychody": [ "laguna", "vesnice" ],
+    "PredmetIds": [],
+    "NpcIds": [  ]
+  },
+  {
+    "Id": "vesnice",
+    "Nazev": "Vesnice",
+    "Popis": "Stara mala vesnice.",
+    "Vychody": [  "les", "hvozd","predmesti" ],
     "PredmetIds": [  ],
     "NpcIds": [  ]
+  },
+  {
+    "Id": "mesto",
+    "Nazev": "Mesto",
+    "Popis": "Rozsahle moderni mesto.",
+    "Vychody": [ "hospoda","kostel","sluj" ],
+    "PredmetIds": [  ],
+    "NpcIds": [  ]
+  },
+  {
+    "Id": "tvrz",
+    "Nazev": "Tvrz",
+    "Popis": "Opustena stara tvrz.",
+    "Vychody": [ "hospoda", "predmesti" ],
+    "PredmetIds": [],
+    "NpcIds": [  ]
+  },
+  {
+    "Id": "bazina",
+    "Nazev": "Bazina",
+    "Popis": "Pozor na to kam pujdes.",
+    "Vychody": [ "hrad","hrbitov" ],
+    "PredmetIds": [],
+    "NpcIds": []
+  },
+  {
+    "Id": "hrbitov",
+    "Nazev": "Hrbitov",
+    "Popis": "Vsude okolo tebe jsou hroby mrtvych.",
+    "Vychody": [ "hory","bazina","kovarna" ],
+    "PredmetIds": [],
+    "NpcIds": []
+  },
+  {
+    "Id": "predmesti",
+    "Nazev": "Predmesti",
+    "Popis": "Nachazis se na predmesti.",
+    "Vychody": [ "tvrz", "namesti", "vesnice" ],
+    "PredmetIds": [  ],
+    "NpcIds": [  ]
+  },
+  {
+    "Id": "kovarna",
+    "Nazev": "Kovarna",
+    "Popis": "Je tu vedro k padnuti.",
+    "Vychody": [ "kostel","hrbitov","sluj" ],
+    "PredmetIds": [  ],
+    "NpcIds": [  ]
+  },
+  {
+    "Id": "sluj",
+    "Nazev": "Sluj",
+    "Popis": "Smrduta draci sluje plna kosti.",
+    "Vychody": [ "kovarna", "mesto" ],
+    "PredmetIds": [],
+    "NpcIds": [ ]
   }
 ]
