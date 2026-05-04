@@ -9,8 +9,7 @@ namespace MoznyZaklad.Data
 {
     public static class SpravceUctu
     {
-        private static readonly string SlozkaUctu = "Data/Ucty";
-
+        private static readonly string SlozkaUctu = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data", "Ucty");
         static SpravceUctu()
         {
             if (!Directory.Exists(SlozkaUctu))

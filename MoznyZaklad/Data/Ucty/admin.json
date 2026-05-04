@@ -1,0 +1,12 @@
+{
+  "Jmeno": "admin",
+  "HesloHash": "$2a$11$q.EYOBumsFM.xb7N9tt3RuYj7O9O5GnDB0yS3RJSt0Exyya23Y3iW",
+  "AktualniMistnostId": "namesti",
+  "Zivoty": 100,
+  "MaxZivoty": 100,
+  "Utok": 10,
+  "Obrana": 2,
+  "Penize": 0,
+  "InventarIds": [],
+  "DosazeneUspechy": []
+}
