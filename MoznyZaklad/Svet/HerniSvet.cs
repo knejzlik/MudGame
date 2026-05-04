@@ -90,11 +90,6 @@ namespace MoznyZaklad.Svet
                 ? vsechnyMistnosti["namesti"]
                 : vsechnyMistnosti.Values.FirstOrDefault()!;
 
-            // Debug výpis
-            foreach (var m in vsechnyMistnosti.Values)
-            {
-                Console.WriteLine($"DEBUG: Mistnost {m.Nazev} (ID: {m.Id}) ma v sobe {m.Predmety.Count} predmetu a {m.NpcPostavy.Count} NPC.");
-            }
         }
 
         public Mistnost NajdiMistnost(string id)

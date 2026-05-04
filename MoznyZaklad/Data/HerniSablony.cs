@@ -45,6 +45,8 @@ namespace MoznyZaklad.Data
         public int Obrana { get; set; }
         public int DropChance { get; set; }
         public string OdmenaId { get; set; }
+
+        public int RespawnTimer { get; set; } = 60;
     }
 
 
@@ -63,8 +65,17 @@ namespace MoznyZaklad.Data
 
         // Seznam předmětů v inventáři
         public List<string> InventarIds { get; set; } = new List<string>();
+        public List<string> DosazeneUspechy { get; set; } = new List<string>();
     }
-
+    public class UspechDefinice
+    {
+        public string Id { get; set; }       
+        public string Nazev { get; set; }    
+        public string Typ { get; set; }      
+        public string Cil { get; set; }      
+        public int Odmena { get; set; }      
+    }
 }
+
 
 

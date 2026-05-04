@@ -12,9 +12,7 @@ namespace MoznyZaklad.Prikazy
         public string Nazev => "utoc";
         public string Napoveda => "utoc <jmeno> - zahaji boj | v boji staci psat 1, 2, 3";
 
-        // Statická paměť probíhajících soubojů
         public static readonly Dictionary<Hrac, BojoveNPC> AktivniSouboje = new Dictionary<Hrac, BojoveNPC>();
-        // Sleduje, zda hráč právě vybírá předmět z batohu
         private static readonly HashSet<Hrac> VybirajiPredmet = new HashSet<Hrac>();
         private static readonly object ZamekSouboju = new object();
 
@@ -54,14 +52,10 @@ namespace MoznyZaklad.Prikazy
                     if (int.TryParse(volba, out int index) && index > 0 && index <= pouzitelne.Count)
                     {
                         var vybranyPredmet = pouzitelne[index - 1];
-
-                        // VOLÁME SPOLEČNOU LOGIKU Z POUZIJPRIKAZ
                         string vysledekEfektu = PouzijPrikaz.AplikujEfekt(hrac, vybranyPredmet);
                         sb.AppendLine(vysledekEfektu);
-
                         VybirajiPredmet.Remove(hrac);
 
-                        // TREST: Protivník tě praští, protože jsi nedával pozor (pil jsi/jedl jsi)
                         int npcDmg = Math.Max(1, rng.Next(protivnik.Utok - 1, protivnik.Utok + 2) - hrac.Obrana);
                         hrac.Zivoty -= npcDmg;
                         sb.AppendLine($"{protivnik.Jmeno} vyuzil tve nepozornosti a zautocil za {npcDmg} dmg!");
@@ -84,50 +78,19 @@ namespace MoznyZaklad.Prikazy
                         protivnik.Zivoty -= hracDmg;
                         sb.AppendLine($"Zasahujes {protivnik.Jmeno} za {hracDmg} dmg.");
                         break;
-                    case "2": // BATOH - Čistá verze
+                    case "2":
                         var pouzitelneVeci = hrac.Inventar.Where(p => !string.IsNullOrEmpty(p.TypUcitku)).ToList();
-
-                        if (pouzitelneVeci.Count == 0)
-                        {
-                            return "Nemáš u sebe žádné použitelné lektvary ani jídlo.\n" + VratStavAMenu(hrac, protivnik);
-                        }
-
-                        VybirajiPredmet.Add(hrac); // Přepneme hráče do režimu výběru
-
+                        if (pouzitelneVeci.Count == 0) return "Nemáš u sebe žádné použitelné lektvary.\n" + VratStavAMenu(hrac, protivnik);
+                        VybirajiPredmet.Add(hrac);
                         sb.AppendLine("\n--- MOŽNÉ PŘEDMĚTY ---");
-
-                        for (int i = 0; i < pouzitelneVeci.Count; i++)
-                        {
-                            var p = pouzitelneVeci[i];
-                            // Určíme popisek bonusu podle TypUcitku
-                            string bonusText = p.TypUcitku.ToLower() switch
-                            {
-                                "leceni" => "HP",
-                                "max_hp" => "Max HP",
-                                "utok" => "Útok",
-                                "obrana" => "Obrana",
-                                _ => "Efekt"
-                            };
-
-                            // Vypíše např.: [1] Elixir sily (+5 Útok)
-                            sb.AppendLine($"[{i + 1}] {p.Nazev} (+{p.HodnotaEfektu} {bonusText})");
-                        }
+                        for (int i = 0; i < pouzitelneVeci.Count; i++) sb.AppendLine($"[{i + 1}] {pouzitelneVeci[i].Nazev}");
                         sb.AppendLine("-----------------------");
-                        sb.AppendLine("Zadej ČÍSLO pro použití, nebo 'X' pro návrat.");
-
                         return sb.ToString();
-                    case "3": // ÚTĚK
-                        if (rng.Next(1, 101) <= 40)
-                        {
-                            AktivniSouboje.Remove(hrac);
-                            Logger.Log($"Hrac {hrac.Jmeno} utekl z boje s {protivnik.Jmeno}.");
-                            return "[UTĚK] Utekl jsi do bezpeci.";
-                        }
+                    case "3":
+                        if (rng.Next(1, 101) <= 40) { AktivniSouboje.Remove(hrac); return "[UTĚK] Utekl jsi."; }
                         sb.AppendLine("Nepovedlo se ti utéct!");
                         break;
-
-                    default:
-                        return VratStavAMenu(hrac, protivnik);
+                    default: return VratStavAMenu(hrac, protivnik);
                 }
 
                 // C) ODPOVĚĎ PROTIVNÍKA
@@ -136,56 +99,42 @@ namespace MoznyZaklad.Prikazy
                     int dmg = Math.Max(1, rng.Next(protivnik.Utok - 1, protivnik.Utok + 2) - hrac.Obrana);
                     hrac.Zivoty -= dmg;
                     sb.AppendLine($"{protivnik.Jmeno} na tebe zautocil za {dmg} dmg.");
-
                     if (hrac.Zivoty <= 0) return UkonciPorazkou(hrac, protivnik, sb);
                     sb.AppendLine("\n" + VratStavAMenu(hrac, protivnik));
                 }
                 else
                 {
-                    // VÍTĚZSTVÍ
+                    // --- VÍTĚZSTVÍ ---
                     sb.AppendLine($"\n[VÍTĚZSTVÍ] {protivnik.Jmeno} padl mrtev k zemi!");
                     Logger.Log($"Hrac {hrac.Jmeno} porazil {protivnik.Jmeno}.");
-                    // --- N LOGIKA PRO KONEC HRY (DRAK) ---
+
+                    // 1. Logika pro Draka
                     if (protivnik.Jmeno.Equals("Drak", StringComparison.OrdinalIgnoreCase))
                     {
+                        // VOLÁME RESPAWN PRO DRAKA (300s = 5 minut)
+                        MudServer.NaplanujRespawn(hrac.AktualniMistnost, protivnik, 300);
+
                         AktivniSouboje.Remove(hrac);
                         hrac.AktualniMistnost.NpcPostavy.Remove(protivnik);
-                        return "VYHRAL_JSI_KONEC"; // Speciální kód pro server
+                        return "VYHRAL_JSI_KONEC";
                     }
-                    // LOGIKA PRO DROP PŘEDMĚTU
-                    if (!string.IsNullOrEmpty(protivnik.OdmenaId))
+
+                    // 2. Logika pro ostatní (Přízrak atd.)
+                    // VOLÁME RESPAWN (60s = 1 minuta)
+                    MudServer.NaplanujRespawn(hrac.AktualniMistnost, protivnik, 60);
+
+                    // Drop předmětu (tvůj původní kód)
+                    if (!string.IsNullOrEmpty(protivnik.OdmenaId) && rng.Next(1, 101) <= protivnik.DropChance)
                     {
-                        int hodKouskou = rng.Next(1, 101); 
-
-                        if (hodKouskou <= protivnik.DropChance)
+                        var predloha = hrac.Svet.VratVsechnyPredmety().FirstOrDefault(p => p.Id == protivnik.OdmenaId);
+                        if (predloha != null)
                         {
-                            var predloha = hrac.Svet.VratVsechnyPredmety().FirstOrDefault(p => p.Id == protivnik.OdmenaId);
-
-                            if (predloha != null)
-                            {
-                                Predmet novyPredmet = new Predmet(predloha.Id, predloha.Nazev, predloha.Popis, predloha.Cena)
-                                {
-                                    TypUcitku = predloha.TypUcitku,
-                                    HodnotaEfektu = predloha.HodnotaEfektu
-                                };
-
-                                // Pokusíme se dát předmět do inventáře
-                                if (hrac.Inventar.Count < hrac.MaxKapacita)
-                                {
-                                    hrac.Inventar.Add(novyPredmet);
-                                    sb.AppendLine($"Našel jsi : **{novyPredmet.Nazev}** (přidáno do batohu).");
-                                }
-                                else
-                                {
-                                    // Inventář je plný - předmět spadne na zem do místnosti
-                                    hrac.AktualniMistnost.Predmety.Add(novyPredmet);
-                                    sb.AppendLine($"Našel jsi {novyPredmet.Nazev}, ale tvůj batoh je plný! Předmět leží na zemi.");
-                                }
-                            }
+                            Predmet novyPredmet = new Predmet(predloha.Id, predloha.Nazev, predloha.Popis, predloha.Cena) { TypUcitku = predloha.TypUcitku, HodnotaEfektu = predloha.HodnotaEfektu };
+                            if (hrac.Inventar.Count < hrac.MaxKapacita) { hrac.Inventar.Add(novyPredmet); sb.AppendLine($"Našel jsi : **{novyPredmet.Nazev}**."); }
+                            else { hrac.AktualniMistnost.Predmety.Add(novyPredmet); sb.AppendLine($"Batoh je plný! {novyPredmet.Nazev} leží na zemi."); }
                         }
                     }
 
-                    // Odstranění z místnosti a ukončení stavu souboje
                     hrac.AktualniMistnost.NpcPostavy.Remove(protivnik);
                     AktivniSouboje.Remove(hrac);
                 }
@@ -193,18 +142,18 @@ namespace MoznyZaklad.Prikazy
                 return sb.ToString();
             }
         }
-
+        // ... (metody VratStavAMenu a UkonciPorazkou zůstávají stejné)
         private string VratStavAMenu(Hrac hrac, BojoveNPC npc)
         {
             return $"STAV: {hrac.Jmeno} ({hrac.Zivoty} HP) | {npc.Jmeno} ({Math.Max(0, npc.Zivoty)} HP)\n" +
-                   "AKCE: [1] Útok | [2] Batoh | [3] Útěk";
+                    "AKCE: [1] Útok | [2] Batoh | [3] Útěk";
         }
 
         private string UkonciPorazkou(Hrac hrac, BojoveNPC protivnik, StringBuilder sb)
         {
             AktivniSouboje.Remove(hrac);
             VybirajiPredmet.Remove(hrac);
-            hrac.Zivoty = 50; 
+            hrac.Zivoty = 50;
             Logger.Log($"Hrac {hrac.Jmeno} byl zabit {protivnik.Jmeno}.");
             return sb.AppendLine("\n[SMRT] Byl jsi poražen!").ToString();
         }

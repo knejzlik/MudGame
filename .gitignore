@@ -483,8 +483,13 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 
-# Ignoruje celou složku s účty
-Ucty/
+# 
+!bin/
+bin/*
+!bin/Debug/
+bin/Debug/*
+!bin/Debug/net8.0/
+bin/Debug/net8.0/*
+!bin/Debug/net8.0/Data/
+!bin/Debug/net8.0/Data/**
 
-# Ignoruje soubor s logy serveru
-server_log

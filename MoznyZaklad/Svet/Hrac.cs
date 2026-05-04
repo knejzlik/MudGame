@@ -21,6 +21,7 @@ namespace MoznyZaklad.Svet
         public int Obrana { get; set; } = 2;
         public HerniSvet Svet { get; set; }
         public int Penize { get; set; } = 0;
+        public List<string> DosazeneUspechy { get; set; } = new List<string>();
 
         public Hrac(Mistnost mistnost, StreamWriter writer, HerniSvet svet)
         {

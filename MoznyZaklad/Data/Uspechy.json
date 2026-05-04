@@ -1,0 +1,23 @@
+﻿[
+  {
+    "Id": "pruzkumnik",
+    "Nazev": "Průzkumník",
+    "Typ": "navstiv_mistnost",
+    "Cil": "sluj",
+    "Odmena": 500
+  },
+  {
+    "Id": "herkules",
+    "Nazev": "Herkules",
+    "Typ": "ziskej_stats",
+    "Cil": "50",
+    "Odmena": 1000
+  },
+  {
+    "Id": "drakobijec",
+    "Nazev": "Drakobijec",
+    "Typ": "poraz_draka",
+    "Cil": "Drak",
+    "Odmena": 5000
+  }
+]

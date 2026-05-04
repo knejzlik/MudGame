@@ -9,11 +9,12 @@ namespace MoznyZaklad.Data
 {
     public static class SpravceUctu
     {
-        private static readonly string SlozkaUctu = "Ucty";
+        private static readonly string SlozkaUctu = "Data/Ucty";
 
         static SpravceUctu()
         {
-            if (!Directory.Exists(SlozkaUctu)) Directory.CreateDirectory(SlozkaUctu);
+            if (!Directory.Exists(SlozkaUctu))
+                Directory.CreateDirectory(SlozkaUctu);
         }
 
         // --- REGISTRACE ---
@@ -26,12 +27,13 @@ namespace MoznyZaklad.Data
                 Jmeno = jmeno,
                 HesloHash = BCrypt.Net.BCrypt.HashPassword(heslo),
                 AktualniMistnostId = "namesti",
-
                 Zivoty = 100,
                 MaxZivoty = 100,
                 Utok = 10,
                 Obrana = 2,
-                Penize = 0
+                Penize = 0,
+                InventarIds = new List<string>(), // Přidána chybějící čárka zde
+                DosazeneUspechy = new List<string>() // Inicializace pro nové hráče
             };
 
             Uloz(novyUcet);
@@ -51,28 +53,27 @@ namespace MoznyZaklad.Data
             return null;
         }
 
-        // --- UKLÁDÁNÍ STAVU (Zavolej při odpojení hráče) ---
+        // --- UKLÁDÁNÍ STAVU ---
         public static void UlozStavHrace(Hrac hrac)
         {
             var ucet = Nacti(hrac.Jmeno);
             if (ucet == null) return;
 
-            // Přepíšeme data aktuálním stavem z herního objektu
             ucet.AktualniMistnostId = hrac.AktualniMistnost.Id;
             ucet.Zivoty = hrac.Zivoty;
-            ucet.MaxZivoty = hrac.MaxZivoty; 
+            ucet.MaxZivoty = hrac.MaxZivoty;
             ucet.Utok = hrac.Utok;
             ucet.Obrana = hrac.Obrana;
             ucet.Penize = hrac.Penize;
-
-            // Uložíme pouze ID předmětů (v HerniSvet je pak dohledáme v katalogu)
             ucet.InventarIds = hrac.Inventar.Select(p => p.Id).ToList();
 
+            // --- KLÍČOVÝ ŘÁDEK PRO ACHIEVEMENTY ---
+            ucet.DosazeneUspechy = hrac.DosazeneUspechy.ToList(); // Přidáno pro ukládání na disk
+
             Uloz(ucet);
-            Console.WriteLine($"[DEBUG]: Stav hrace {hrac.Jmeno} byl uspesne ulozen.");
+            MoznyZaklad.Server.Logger.Log($"Stav hráče {hrac.Jmeno} uložen.");
         }
 
-        // --- POMOCNÉ METODY ---
         private static string ZiskejCestu(string jmeno) => Path.Combine(SlozkaUctu, $"{jmeno.ToLower()}.json");
 
         private static void Uloz(UcetDto ucet)
