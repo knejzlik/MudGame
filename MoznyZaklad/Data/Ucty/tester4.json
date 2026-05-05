@@ -1,0 +1,14 @@
+{
+  "Jmeno": "Tester4",
+  "HesloHash": "$2a$11$AHPRbPRX/W8N78f7y/SrAe1FaOaSYwj1I2HiHk1BDPDhttDY6My42",
+  "AktualniMistnostId": "mesto",
+  "Zivoty": 100,
+  "MaxZivoty": 100,
+  "Utok": 10,
+  "Obrana": 2,
+  "Penize": 0,
+  "InventarIds": [
+    "mapa"
+  ],
+  "DosazeneUspechy": []
+}

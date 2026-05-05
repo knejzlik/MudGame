@@ -1,0 +1,17 @@
+{
+  "Jmeno": "Michael",
+  "HesloHash": "$2a$11$hW3HpfltzFv2AOIBy2DFJ.ygayj8PRu/eRr/23Ug4iPPiFk1gWcsy",
+  "AktualniMistnostId": "sluj",
+  "Zivoty": 9,
+  "MaxZivoty": 100,
+  "Utok": 10,
+  "Obrana": 2,
+  "Penize": 5500,
+  "InventarIds": [
+    "dzban"
+  ],
+  "DosazeneUspechy": [
+    "pruzkumnik",
+    "drakobijec"
+  ]
+}

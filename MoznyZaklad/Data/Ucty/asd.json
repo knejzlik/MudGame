@@ -1,0 +1,16 @@
+{
+  "Jmeno": "asd",
+  "HesloHash": "$2a$11$TzrEvj9W6PW.0LdltWi/oe.DeZytqelgmPXsJ5PA8tF6UFskBZPTi",
+  "AktualniMistnostId": "mesto",
+  "Zivoty": 92,
+  "MaxZivoty": 100,
+  "Utok": 10,
+  "Obrana": 2,
+  "Penize": 500,
+  "InventarIds": [
+    "lektvar_leceni"
+  ],
+  "DosazeneUspechy": [
+    "pruzkumnik"
+  ]
+}

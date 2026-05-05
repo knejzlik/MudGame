@@ -1,0 +1,12 @@
+{
+  "Jmeno": "Tester1",
+  "HesloHash": "$2a$11$VJdT9JPcP9Bwt0EwYVnvO.WmpmUeM4nWV6XiDpLWEKaQcJnPMM9AG",
+  "AktualniMistnostId": "namesti",
+  "Zivoty": 100,
+  "MaxZivoty": 100,
+  "Utok": 10,
+  "Obrana": 2,
+  "Penize": 0,
+  "InventarIds": [],
+  "DosazeneUspechy": []
+}

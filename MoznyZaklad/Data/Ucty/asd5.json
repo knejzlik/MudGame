@@ -1,0 +1,14 @@
+{
+  "Jmeno": "asd5",
+  "HesloHash": "$2a$11$jfFOATzeS8htWqP3Mtgb8.3xmACpDjqrs/y8A1vuAsbYP9az8pjli",
+  "AktualniMistnostId": "hvozd",
+  "Zivoty": 100,
+  "MaxZivoty": 100,
+  "Utok": 10,
+  "Obrana": 2,
+  "Penize": 0,
+  "InventarIds": [
+    "kompas"
+  ],
+  "DosazeneUspechy": []
+}

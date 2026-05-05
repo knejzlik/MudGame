@@ -1,0 +1,12 @@
+{
+  "Jmeno": "Padak",
+  "HesloHash": "$2a$11$ZyZXMVHrKMy6MTAyvcSmSOI9bbdnJLsLP9fOpCI3esUHDPpKW7QrK",
+  "AktualniMistnostId": "namesti",
+  "Zivoty": 100,
+  "MaxZivoty": 100,
+  "Utok": 10,
+  "Obrana": 2,
+  "Penize": 0,
+  "InventarIds": [],
+  "DosazeneUspechy": []
+}
