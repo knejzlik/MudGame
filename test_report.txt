@@ -1,0 +1,48 @@
+SPSE Jecna Test Report
+
+GENERAL INFORMATION
+Project:	MudGame
+Tester:	Lukáš Knejzlík
+Preparation and precondition
+Notes:	
+ENVIRONMENTAL 
+Database engine:	
+Software and runtime environment:	
+
+
+Test Case	Test Result	Bugs
+MVP_01	FAIL	Nejde zadat IP
+MVP_02	SUCCESS	
+MVP_03	SUCCESS	
+MVP_04	SUCCESS	
+MVP_05	SUCCESS	
+MVP_06	SUCCESS	
+MVP_07	SUCCESS	
+MVP_08	SUCCESS	
+MVP_09	SUCCESS	
+MVP_10	SUCCESS	
+MVP_11	SUCCESS	
+REQ_I1	SUCCESS	
+REQ_I2	SUCCESS	
+REQ_I3	SUCCESS	
+REQ_I4	SUCCESS	
+REQ_P1	SUCCESS	
+M2_01	SUCCESS	
+M2_02	SUCCESS	
+M1_01	SUCCESS	
+M1_02	SUCCESS	
+M4_01	SUCCESS	
+M4_02	SUCCESS	
+M8_01	SUCCESS	
+M8_02	SUCCESS	
+M_01	SUCCESS	
+M_02	SUCCESS	
+
+
+Incidents
+Incident ID	MVP_01
+Summary	Nejde zadat ip
+Expected result	Lze zadat IP
+Test result	FAIL
+Repro steps	Spuste klienta
+Note:	
